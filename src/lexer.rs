@@ -44,8 +44,8 @@ pub fn tokenize(input: &str) -> Vec<Token> {
         r"|(?<keyword_then>then)",
         r"|(?<keyword_else>else)",
         r"|(?<identifier>[a-zA-Z][a-zA-Z0-9]*)",
-        r"|(?<open_parenthisis>\()",
-        r"|(?<close_parenthisis>\))",
+        r"|(?<open_parenthesis>\()",
+        r"|(?<close_parenthesis>\))",
         r"|(?<comma>,)",
         r"|(?<semicolon>;)",
         r"|(?<number>(\d+)|(\d*)(\.\d+))",
@@ -69,9 +69,9 @@ pub fn tokenize(input: &str) -> Vec<Token> {
             tokens.push(Token::Keyword(KeywordType::Else));
         } else if let Some(identifier) = capture_group.name("identifier") {
             tokens.push(Token::Identifier(identifier.as_str().to_string()));
-        } else if capture_group.name("open_parenthisis").is_some() {
+        } else if capture_group.name("open_parenthesis").is_some() {
             tokens.push(Token::OpenParenthesis);
-        } else if capture_group.name("close_parenthisis").is_some() {
+        } else if capture_group.name("close_parenthesis").is_some() {
             tokens.push(Token::CloseParenthesis);
         } else if capture_group.name("comma").is_some() {
             tokens.push(Token::Comma);
@@ -87,6 +87,7 @@ pub fn tokenize(input: &str) -> Vec<Token> {
     return tokens;
 }
 
+#[cfg(test)]
 mod test {
     use super::{tokenize, KeywordType, Token};
 
