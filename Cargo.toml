@@ -1,0 +1,17 @@
+[package]
+name = "llvm-kaleidescope-rust"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "kaleidoscope"
+path = "src/lib.rs"
+
+[[bin]]
+name = "kc"
+path = "src/cmd/main.rs"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+"regex" = "1.10.3"
